@@ -17,8 +17,10 @@ def home():
             f.write(size + '\n')
         return make_response(jsonify({'SUCCESS': 'success'}), 200)
     if request.method == 'GET':
-        name = 'adam'
-        size = 'XL'
+        f = open('results.txt', 'r')
+        lines = f.readlines()
+        name = lines[0].rstrip()
+        size = lines[1].rstrip()
         return jsonify(name=name, size=size)
 
 if __name__ == '__main__':
